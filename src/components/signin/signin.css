@@ -1,0 +1,65 @@
+/* Basic Styling for SignIn Form */
+.signin-container {
+  max-width: 400px; /* Keep a fixed width */
+  margin: 50px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signin-form h2 {
+  text-align: center;
+}
+
+.signin-form .form-group {
+  margin-bottom: 15px;
+}
+
+.signin-form .form-group label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+}
+
+.signin-form .form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signin-form .btn1 {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signin-form .btn1:hover {
+  background: #0056b3;
+}
+
+.signin-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signin-footer p {
+  font-size: 14px;
+}
+
+.signin-footer span {
+  font-weight: bold;
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.signin-footer span:hover {
+  color: #0056b3;
+}
