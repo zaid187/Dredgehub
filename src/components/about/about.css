@@ -1,17 +1,28 @@
 .about {
   margin-bottom: 80px;
+  /* background-image: url(''); Use the image specific to the About Us section */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px; /* Add padding for spacing around the content */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
+
 .about .heading {
   text-align: left;
   width: 100%;
   margin-bottom: 30px;
 }
+
 .about p {
   font-size: 15px;
   padding-right: 30px;
   margin-bottom: 20px;
   line-height: 30px;
+  color: #000000; /* Ensure text is readable if the background is dark */
 }
+
 @media screen and (max-width: 768px) {
   .about .container {
     flex-direction: column;
@@ -23,3 +34,5 @@
     margin-top: 50px;
   }
 }
+
+

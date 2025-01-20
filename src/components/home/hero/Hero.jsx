@@ -7,7 +7,7 @@ const Hero = () => {
     <>
       <section className='hero'>
         <div className='container'>
-          <Heading title='Take Dredge to your destination ' subtitle='Find our office in your local city.' />
+          <Heading title='Take Dredge to your destination ' subtitle='Quote your required Dredge!.' />
 
           
         </div>

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./header.css";
 import { nav } from "../../data/Data";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [navList, setNavList] = useState(false);
-  const history = useHistory(); // To programmatically navigate
 
   const handleSignInClick = () => {
-    history.push("/signin"); // Redirect to the sign-in page
+    window.location.href = "/signin"; // Redirect to the sign-in page
   };
 
   return (
@@ -16,7 +15,14 @@ const Header = () => {
       <header>
         <div className="container flex">
           <div className="logo">
-            <img src="./images/logo.png" alt="Logo" />
+            {/* Wrap the logo in a Link to navigate to the home page */}
+            <Link to="/">
+              <img
+                src="./images/logo.png"
+                alt="Logo"
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
           </div>
           <div className="nav">
             <ul className={navList ? "small" : "flex"}>
@@ -29,10 +35,10 @@ const Header = () => {
           </div>
           <div className="button flex">
             <h4>
-              <span>2</span> My List
+              <span></span> My List
             </h4>
             <button className="btn1" onClick={handleSignInClick}>
-              <i className="fa fa-sign-out"></i> Sign In
+              <i className="fa fa-sign-out"></i> Sign Up/Log In
             </button>
           </div>
 

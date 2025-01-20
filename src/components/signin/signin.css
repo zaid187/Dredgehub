@@ -1,15 +1,41 @@
-/* Basic Styling for SignIn Form */
+/* Container for the sign-in form */
 .signin-container {
-  max-width: 400px; /* Keep a fixed width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 900px;
   margin: 50px auto;
-  padding: 20px;
-  background: #f9f9f9;
+  background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.signin-form h2 {
+/* Left section for the image */
+.signin-image {
+  flex: 1; /* Take half of the width */
+  background-image: url('/Users/shubz8/Documents/Dredgehub/public/images/signinbg.png'); /* Replace with your own image URL */
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  height: 400px; /* Fixed height */
+}
+
+/* Right section for the form */
+.signin-form-container {
+  flex: 1; /* Take half of the width */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signin-form-container h2 {
   text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
 }
 
 .signin-form .form-group {
@@ -37,6 +63,7 @@
   color: white;
   border: none;
   border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -51,15 +78,19 @@
 
 .signin-footer p {
   font-size: 14px;
+  color: #555;
 }
 
-.signin-footer span {
+.signin-footer button {
   font-weight: bold;
-  color: blue;
+  color: white;
+  background: #007bff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  text-decoration: underline;
 }
 
-.signin-footer span:hover {
-  color: #0056b3;
+.signin-footer button:hover {
+  background: #0056b3;
 }

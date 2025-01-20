@@ -1,0 +1,68 @@
+/* Container styling for the list */
+.itemlist-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling */
+  .itemlist-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Styling for the unordered list */
+  .itemlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Styling for each list item */
+  .itemlist-item {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Image styling */
+  .itemlist-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Details styling */
+  .itemlist-details h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 5px;
+  }
+  
+  .itemlist-details p {
+    font-size: 14px;
+    color: #666;
+    margin: 2px 0;
+  }
+  
+  /* Hover effect for the list items */
+  .itemlist-item:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02);
+  }
+  
