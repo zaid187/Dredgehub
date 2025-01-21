@@ -303,3 +303,18 @@ export const footer = [
     text: [{ list: "About" }, { list: "Blog" }, { list: "Get a Quote" }, { list: "Login" }],
   },
 ]
+// Add this to your data.js file
+
+export const quotes = [
+  { id: 1, quoteText: "Quote for Cargo Titan", date: "2025-01-21" },
+  { id: 2, quoteText: "Quote for Dredge Beta", date: "2025-01-20" },
+  { id: 3, quoteText: "Quote for Vessel Explorer", date: "2025-01-19" },
+  // Add more as needed
+];
+
+export const queries = [
+  { id: 1, queryText: "Query about Cargo Titan availability", date: "2025-01-21" },
+  { id: 2, queryText: "Query about Dredge Beta rental rates", date: "2025-01-20" },
+  { id: 3, queryText: "Query about Vessel Explorer features", date: "2025-01-19" },
+  // Add more as needed
+];

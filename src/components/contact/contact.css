@@ -1,35 +1,19 @@
-Canvas .contact {
-  background-image: url(''); /* Replace with your image path */
-  background-size: cover; /* Ensures the image covers the entire container */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents tiling */
-  color: #fff; /* Adjusts text color for better readability */
-  padding: 50px 20px; /* Adds some spacing around the content */
-}
-
-Canvas .contact form div {
+.contact form div {
   display: flex;
 }
-
 .contact textarea {
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
   border-radius: 5px;
   margin-bottom: 20px;
 }
-
 .contact input {
   margin-bottom: 20px;
   margin-right: 10px;
 }
-
 .contact form {
   padding: 30px;
-  background: rgba(255, 255, 255, 0.8); /* Adds a semi-transparent background */
-  border-radius: 10px; /* Rounds the form corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
 }
-
 @media screen and (max-width: 768px) {
   .contact h4 {
     width: 100%;

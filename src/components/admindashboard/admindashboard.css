@@ -1,64 +1,130 @@
-/* adminDashboard.css */
+/* General Styles */
+body {
+  background-color: #ffffff;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
 
-/* General styles for the admin dashboard */
-.admin-dashboard {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header styles */
-  .admin-dashboard h1 {
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Section styles */
-  .admin-dashboard section {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Section titles */
-  .admin-dashboard section h2 {
-    font-size: 1.5rem;
-    color: #007bff;
-    margin-bottom: 15px;
-  }
-  
-  /* List styles */
-  .admin-dashboard ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .admin-dashboard ul li {
-    margin-bottom: 15px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Info text styles */
-  .admin-dashboard ul li p {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  /* Highlighting labels */
-  .admin-dashboard ul li p strong {
-    color: #333;
-    font-weight: bold;
-  }
-  
+.dashboard-container {
+  padding: 20px;
+}
+
+.sales-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #6993F5;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card i {
+  font-size: 30px;
+  color: #f39c12;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.card p {
+  margin: 0;
+  color: #b8b8c7;
+}
+
+.card span {
+  color: #12fd1a;
+}
+
+.analytics {
+  display: flex;
+  justify-content: space-between;
+}
+
+.level-chart,
+.top-products {
+  background: #6993F5;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.level-chart .chart-placeholder {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #6993F5;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* Bar Chart Placeholder */
+.bar-chart {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.bar {
+  width: 20%;
+  background-color: #f39c12;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #6993F5;
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Quotes and Queries List Styles */
+.quotes-list, .queries-list {
+  margin-top: 20px;
+  background: #1d2636;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.popularity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #f39c12;
+  border-radius: 5px;
+  flex: 1;
+}
+
+/* Checkbox Style */
+input[type="checkbox"] {
+  cursor: pointer;
+  margin: 0;
+}
