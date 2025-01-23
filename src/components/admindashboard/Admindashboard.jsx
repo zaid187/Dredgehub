@@ -19,6 +19,28 @@ const Admindashboard = () => {
     { id: 3, name: "Query #3", status: "In Progress" },
   ];
 
+  // State to manage selected items for quotes and queries
+  const [selectedQuotes, setSelectedQuotes] = useState([]);
+  const [selectedQueries, setSelectedQueries] = useState([]);
+
+  // Handle checkbox toggle for Quotes
+  const handleQuoteChange = (id) => {
+    setSelectedQuotes((prevState) =>
+      prevState.includes(id)
+        ? prevState.filter((quoteId) => quoteId !== id)
+        : [...prevState, id]
+    );
+  };
+
+  // Handle checkbox toggle for Queries
+  const handleQueryChange = (id) => {
+    setSelectedQueries((prevState) =>
+      prevState.includes(id)
+        ? prevState.filter((queryId) => queryId !== id)
+        : [...prevState, id]
+    );
+  };
+
   return (
     <div className="dashboard-container">
       <div className="search-bar">
@@ -54,6 +76,7 @@ const Admindashboard = () => {
           <table>
             <thead>
               <tr>
+                <th>Check</th>
                 <th>#</th>
                 <th>Name</th>
                 <th>Status</th>
@@ -62,6 +85,13 @@ const Admindashboard = () => {
             <tbody>
               {quotes.map((quote) => (
                 <tr key={quote.id}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={selectedQuotes.includes(quote.id)}
+                      onChange={() => handleQuoteChange(quote.id)}
+                    />
+                  </td>
                   <td>{quote.id}</td>
                   <td>{quote.name}</td>
                   <td>{quote.status}</td>
@@ -79,6 +109,7 @@ const Admindashboard = () => {
           <table>
             <thead>
               <tr>
+                <th>Check</th>
                 <th>#</th>
                 <th>Name</th>
                 <th>Status</th>
@@ -87,6 +118,13 @@ const Admindashboard = () => {
             <tbody>
               {queries.map((query) => (
                 <tr key={query.id}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={selectedQueries.includes(query.id)}
+                      onChange={() => handleQueryChange(query.id)}
+                    />
+                  </td>
                   <td>{query.id}</td>
                   <td>{query.name}</td>
                   <td>{query.status}</td>
@@ -100,7 +138,14 @@ const Admindashboard = () => {
       <div className="analytics">
         <div className="level-chart">
           <h3>Level</h3>
-          <div className="chart-placeholder">[Bar Chart]</div>
+          <div className="chart-placeholder">
+            {/* Bar Chart Placeholder */}
+            <div className="bar-chart">
+              <div className="bar" style={{ height: "60%" }}></div>
+              <div className="bar" style={{ height: "40%" }}></div>
+              <div className="bar" style={{ height: "80%" }}></div>
+            </div>
+          </div>
         </div>
         <div className="top-products">
           <h3>Top Products</h3>

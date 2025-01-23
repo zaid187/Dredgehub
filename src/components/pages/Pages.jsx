@@ -11,6 +11,8 @@ import Contact from "../contact/Contact";
 import SignIn from "../signin/Signin";
 import Admindashboard from "../admindashboard/Admindashboard";
 import Itemlist from "../itemlist/Itemlist"; // Correct import
+import Signup from "../signin/Signup";
+
 
 const Pages = () => {
   return (
@@ -26,6 +28,7 @@ const Pages = () => {
           <Route exact path="/pricing" component={Pricing} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup" component={Signup} />
           <Route exact path="/admindashboard" component={Admindashboard} />
         </Switch>
         <Footer />

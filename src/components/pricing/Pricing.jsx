@@ -45,7 +45,7 @@ export const Pricing = () => {
         </div>
         <div style={boxStyle}>
           <label>Transport Type</label>
-          <input type="text" placeholder="e.g., By road, waterways" />
+          <input type="text" placeholder="e.g.waterways" />
         </div>
         <div style={boxStyle}>
           <label>Time Duration</label>

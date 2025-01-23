@@ -53,13 +53,14 @@ const SignIn = () => {
 
         {/* Footer for toggling between Log In and Sign Up */}
         <div className="signin-footer">
-          <p>
-            Don't have an account?{" "}
-            <button onClick={() => alert("Redirect to sign-up page")}>
-              Sign Up
-            </button>
-          </p>
-        </div>
+  <p>
+    Don't have an account?{" "}
+    <button onClick={() => (window.location.href = "/signup")}>
+      Sign Up
+    </button>
+  </p>
+</div>
+
       </div>
     </div>
   );
