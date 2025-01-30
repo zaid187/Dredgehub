@@ -6,7 +6,7 @@
 }
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #fff;
+  background-color: #DFF2EB;
 }
 .container {
   max-width: 80%;
@@ -19,7 +19,7 @@ body {
 }
 a {
   text-decoration: none;
-  color: #000;
+  color: #4A628A;
   text-transform: capitalize;
 }
 ul {
@@ -28,8 +28,7 @@ ul {
 button {
   border-radius: 5px;
   padding: 17px 30px;
-  background: #6993f5 
-  ;
+  background: #7AB2D3;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -44,13 +43,13 @@ button i {
   margin: auto;
 }
 .heading h1 {
-  color: #2d3954;
+  color: #4A628A;
   font-weight: 600;
   text-transform: capitalize;
   font-size: 35px;
 }
 .heading p {
-  color: #72809d;
+  color: #7AB2D3;
 }
 textarea,
 input {
@@ -61,7 +60,7 @@ input {
 .background {
   padding: 80px 0;
   position: relative;
-  background: #f7f9fc;
+  background: #B9E5E8;
 }
 
 .grid5 {
@@ -70,7 +69,7 @@ input {
   grid-gap: 30px;
 }
 label {
-  color: #2d3954;
+  color: #4A628A;
   font-size: 14px;
 }
 .mtop {
@@ -99,6 +98,8 @@ img {
 .btn2 {
   border-radius: 50px;
   font-size: 20px;
+  background-color: #7AB2D3;
+  color: #fff;
 }
 .grid4 {
   display: grid;
@@ -106,8 +107,9 @@ img {
   grid-gap: 30px;
 }
 .btn3 {
-  background: #ff6922;
+  background: #4A628A;
   border-radius: 50px;
+  color: #fff;
 }
 .btn4 {
   background-color: #000;
@@ -116,15 +118,16 @@ img {
 .btn5 {
   border-radius: 50px;
   padding: 20px 40px;
-  color: #6993f5 ;
+  color: #4A628A;
   font-size: 20px;
   font-weight: 400;
-  border: 5px solid #27ae601f;
+  border: 5px solid #DFF2EB;
   background: #fff;
 }
 .back {
   height: 40vh;
   position: relative;
+  background-color: #B9E5E8;
 }
 .back img {
   height: 40vh;
@@ -141,7 +144,7 @@ img {
   left: 0;
   width: 100%;
   height: 40vh;
-  background: rgba(17, 40, 72, 0.629);
+  background: rgba(74, 98, 138, 0.7);
   z-index: -1;
 }
 .back .container {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./header.css";
 import { nav } from "../../data/Data";
 import { Link } from "react-router-dom";
+ //import  Mylist  from "./Mylist"; Adjust path as needed
 
 const Header = () => {
   const [navList, setNavList] = useState(false);
@@ -10,6 +11,7 @@ const Header = () => {
     window.location.href = "/signin"; // Redirect to the sign-in page
   };
 
+  
   return (
     <>
       <header>
@@ -34,9 +36,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="button flex">
-            <h4>
-              <span></span> My List
-            </h4>
+            {/* Navigate to My List manually */}
             <button className="btn1" onClick={handleSignInClick}>
               <i className="fa fa-sign-out"></i> Sign Up/Log In
             </button>

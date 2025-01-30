@@ -1,7 +1,7 @@
 /* General Styles */
 body {
-  background-color: #ffffff;
-  color: #fff;
+  background-color: #DFF2EB;
+  color: #4A628A;
   font-family: Arial, sans-serif;
 }
 
@@ -16,7 +16,7 @@ body {
 }
 
 .card {
-  background: #6993F5;
+  background: #7AB2D3;
   border-radius: 10px;
   padding: 20px;
   flex: 1;
@@ -28,21 +28,22 @@ body {
 
 .card i {
   font-size: 30px;
-  color: #f39c12;
+  color: #4A628A;
 }
 
 .card h3 {
   margin: 0;
   font-size: 24px;
+  color: #ffffff;
 }
 
 .card p {
   margin: 0;
-  color: #b8b8c7;
+  color: #B9E5E8;
 }
 
 .card span {
-  color: #12fd1a;
+  color: #DFF2EB;
 }
 
 .analytics {
@@ -52,7 +53,7 @@ body {
 
 .level-chart,
 .top-products {
-  background: #6993F5;
+  background: #7AB2D3;
   border-radius: 10px;
   padding: 20px;
   flex: 1;
@@ -64,7 +65,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #6993F5;
+  background: #B9E5E8;
   border-radius: 10px;
   margin-top: 10px;
 }
@@ -78,7 +79,7 @@ body {
 
 .bar {
   width: 20%;
-  background-color: #f39c12;
+  background-color: #4A628A;
   border-radius: 5px;
 }
 
@@ -91,23 +92,26 @@ table th,
 table td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B9E5E8;
 }
 
 table th {
-  background-color: #6993F5;
+  background-color: #7AB2D3;
+  color: #ffffff;
 }
 
 table tbody tr:hover {
-  background-color: #f1f1f1;
+  background-color: #DFF2EB;
 }
 
 /* Quotes and Queries List Styles */
-.quotes-list, .queries-list {
+.quotes-list,
+.queries-list {
   margin-top: 20px;
-  background: #1d2636;
+  background: #B9E5E8;
   padding: 20px;
   border-radius: 10px;
+  color: #4A628A;
 }
 
 .popularity {
@@ -118,7 +122,7 @@ table tbody tr:hover {
 
 .progress-bar {
   height: 10px;
-  background: #f39c12;
+  background: #4A628A;
   border-radius: 5px;
   flex: 1;
 }

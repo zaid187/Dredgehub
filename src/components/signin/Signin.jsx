@@ -4,6 +4,7 @@ import "./signin.css";
 const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const openDashboard = () => {
     if (username === "asmarinesadmin" && password === "arshad03") {
@@ -11,6 +12,10 @@ const SignIn = () => {
     } else {
       alert("Invalid username or password");
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -34,16 +39,25 @@ const SignIn = () => {
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="password-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password-btn"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? "Hide" : "Show"} 
+              </button>
+            </div>
           </div>
           <button
-            type="button" // Change type to "button" to prevent form submission
+            type="button"
             className="btn1"
             onClick={openDashboard}
           >
@@ -53,14 +67,13 @@ const SignIn = () => {
 
         {/* Footer for toggling between Log In and Sign Up */}
         <div className="signin-footer">
-  <p>
-    Don't have an account?{" "}
-    <button onClick={() => (window.location.href = "/signup")}>
-      Sign Up
-    </button>
-  </p>
-</div>
-
+          <p>
+            Don't have an account?{" "}
+            <button onClick={() => (window.location.href = "/signup")}>
+              Sign Up
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );
