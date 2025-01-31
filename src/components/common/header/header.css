@@ -66,3 +66,11 @@ header .toggle {
   }
 }
 
+.btn1 {
+  background-color: #7AB2D3; /* Change this to your desired color */
+  color: white; /* Text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

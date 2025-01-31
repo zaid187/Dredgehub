@@ -56,21 +56,7 @@ const RecentCard = () => {
               </p>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "15px" }}>
-              <div>
-                <button
-                  style={{
-                    background: "#25b579",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "8px",
-                    padding: "8px 12px",
-                    fontSize: "14px",
-                    cursor: "pointer",
-                  }}
-                >
-                  {price}
-                </button>
-              </div>
+            
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <button
                   style={{

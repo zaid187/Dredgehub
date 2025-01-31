@@ -113,7 +113,6 @@ export const list = [
     name: "Cargo Atlas",
     location: "Mumbai",
     category: "For Rent",
-    price: "₹85,00,000",
     type: "Cargo",
   },
   {
