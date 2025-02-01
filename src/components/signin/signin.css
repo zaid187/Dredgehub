@@ -15,7 +15,7 @@
 /* Left section for the image */
 .signin-image {
   flex: 1; /* Take half of the width */
-  background-image: url('/Users/shubz8/Documents/Dredgehub/public/images/signinbg.png'); /* Replace with your own image URL */
+  background-image: url('lighthouse.jpg'); /* Replace with your own image URL */
   background-size: cover;
   background-position: center;
   border-radius: 20px;

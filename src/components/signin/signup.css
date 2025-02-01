@@ -16,7 +16,7 @@
 /* Left section for the image */
 .signin-image {
   flex: 1;
-  background-image: url('/Users/shubz8/Documents/Dredgehub/public/images/signinbg.png'); /* Replace with your image path */
+  background-image: url('lighthouse.jpg'); /* Replace with your image path */
   background-size: cover;
   background-position: center;
   border-radius: 8px 0 0 8px; /* Rounded corners only on the left */

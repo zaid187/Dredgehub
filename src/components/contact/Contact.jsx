@@ -1,5 +1,5 @@
 import React from "react"
-import img from "../images/pricing.jpg"
+import img from '../../assets/images/pricing.jpg';
 import Back from "../common/Back"
 import "./contact.css"
 

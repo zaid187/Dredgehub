@@ -1,24 +1,41 @@
 import React, { useState } from "react";
-import "./signin.css";
+import axios from "axios"; // To make HTTP requests
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const openDashboard = () => {
+  const handleLogin = async () => {
+    // Check if the username and password match the admin credentials
     if (username === "asmarinesadmin" && password === "arshad03") {
-      window.open("/admindashboard", "_blank");
-    } else {
-      alert("Invalid username or password");
+      
+      window.location.href = "/admindashboard"; // Redirect to Admin Dashboard
+      return; // Exit the function to prevent further checks
+    }
+
+    try {
+      // Make an API request to the backend for general user login
+      const response = await axios.post("http://localhost:4000/api/auth/login", {
+        username: username,
+        password: password,
+      });
+
+      // If login is successful, store the username and redirect to the home page
+      if (response.status === 200) {
+        localStorage.setItem("username", username); // Store the username in localStorage
+        
+        window.location.href = "/"; // Redirect to the home page
+      } else {
+        alert("Invalid username or password");
+      }
+    } catch (error) {
+      alert("Error: " + (error.response?.data?.message || error.message));
     }
   };
 
   return (
     <div className="signin-container">
-      {/* Left section for the image */}
       <div className="signin-image"></div>
-
-      {/* Right section for the form */}
       <div className="signin-form-container">
         <form className="signin-form" onSubmit={(e) => e.preventDefault()}>
           <h2>Log In</h2>
@@ -42,28 +59,22 @@ const SignIn = () => {
               required
             />
           </div>
-          <button
-            type="button" // Change type to "button" to prevent form submission
-            className="btn1"
-            onClick={openDashboard}
-          >
+          <button type="button" className="btn1" onClick={handleLogin}>
             Log In
           </button>
         </form>
 
-        {/* Footer for toggling between Log In and Sign Up */}
         <div className="signin-footer">
-  <p>
-    Don't have an account?{" "}
-    <button onClick={() => (window.location.href = "/signup")}>
-      Sign Up
-    </button>
-  </p>
-</div>
-
+          <p>
+            Don't have an account?{" "}
+            <button onClick={() => (window.location.href = "/signup")}>
+              Sign Up
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default SignIn;

@@ -2,7 +2,8 @@ import React from "react"
 import Back from "../common/Back"
 import RecentCard from "../home/recent/RecentCard"
 import "../home/recent/recent.css"
-import img from "/Users/shubz8/Documents/Dredgehub/src/components/images/blogbg.png"
+import img from '../../assets/images/blogbg.png';
+
 
 const Blog = () => {
   return (

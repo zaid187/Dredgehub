@@ -1,21 +1,40 @@
 import React, { useState } from "react";
-import "./signup.css"; // Reuse the same CSS for styling
+import axios from "axios"; // Import axios for API requests
+import "./signup.css";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      setError("Passwords do not match");
       return;
     }
 
-    // Placeholder for sign-up logic
-    alert(`Account created for ${username}`);
-    window.location.href = "/Signin"; // Redirect to the sign-in page after successful sign-up
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/signup", {
+        username,
+        email,
+        password,
+        confirmPassword,
+      });
+
+      if (response.status === 201) {
+        alert("Account created successfully! Please log in.");
+        window.location.href = "/signin"; // Redirect to the sign-in page
+      }
+    } catch (err) {
+      console.error("Error during signup:", err);
+      if (err.response && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("An error occurred. Please try again.");
+      }
+    }
   };
 
   return (
@@ -27,6 +46,7 @@ const SignUp = () => {
       <div className="signin-form-container">
         <form className="signin-form" onSubmit={(e) => e.preventDefault()}>
           <h2>Sign Up</h2>
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <div className="form-group">
             <label>Username</label>
             <input
@@ -67,11 +87,7 @@ const SignUp = () => {
               required
             />
           </div>
-          <button
-            type="button"
-            className="btn1"
-            onClick={handleSignUp}
-          >
+          <button type="button" className="btn1" onClick={handleSignUp}>
             Sign Up
           </button>
         </form>
@@ -90,4 +106,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUp;

@@ -1,7 +1,6 @@
 import React from "react"
 import "./itemlist.css" // Import the CSS file
-import { list } from "/Users/shubz8/Documents/Dredgehub/src/components/data/Data.js"; // Correct path to data.js
-
+import { list } from '../data/Data.js';
 
 const Itemlist = ({ selectedItem }) => {
   // Filter the data based on the selected type
