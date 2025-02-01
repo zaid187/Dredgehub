@@ -1,17 +1,11 @@
-/* Container for the sign-in form */
-.signin-container {
+/* Password container */
+.password-container {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 80%;
-  max-width: 900px;
-  margin: 50px auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
 }
 
+<<<<<<< HEAD
 /* Left section for the image */
 .signin-image {
   flex: 1; /* Take half of the width */
@@ -49,48 +43,31 @@
 }
 
 .signin-form .form-group input {
+=======
+.password-container input {
+>>>>>>> 7b3659392253623218b5c8970e8540e14ea0d5cf
   width: 100%;
-  padding: 10px;
+  padding-right: 50px; /* Space for the toggle button */
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-.signin-form .btn1 {
-  width: 100%;
-  padding: 10px;
-  background: #007bff;
-  color: white;
+/* Toggle password button inside the input */
+.toggle-password-btn {
+  position: absolute;
+  right: 10px; /* Align the button inside the input field */
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
   border: none;
-  border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  color: #007bff;
 }
 
-.signin-form .btn1:hover {
-  background: #0056b3;
-}
-
-.signin-footer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.signin-footer p {
-  font-size: 14px;
-  color: #555;
-}
-
-.signin-footer button {
-  font-weight: bold;
-  color: white;
-  background: #007bff;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.signin-footer button:hover {
-  background: #0056b3;
+.toggle-password-btn:hover {
+  color: #0056b3;
 }

@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export const Pricing = () => {
-  // Define inline styles
+  // Define inline styles as JavaScript objects
   const formStyle = {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column', // Set form to vertical layout
     gap: '15px',
     padding: '20px',
     backgroundColor: '#f9f9f9',
     borderRadius: '8px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    maxWidth: '400px',
-    margin: '0 auto',
+    maxWidth: '400px', // Optional: Limit the width
+    margin: '0 auto', // Center horizontally
   };
 
   const boxStyle = {
     display: 'flex',
     flexDirection: 'column',
     gap: '5px',
-    padding: '10px 0',
+    padding: '10px 0', // Adjust padding for vertical alignment
   };
 
   const buttonStyle = {
@@ -29,95 +29,33 @@ export const Pricing = () => {
     borderRadius: '5px',
     cursor: 'pointer',
     fontSize: '16px',
-    alignSelf: 'center',
+    alignSelf: 'center', // Center the button horizontally
   };
 
-  // State for form inputs
-  const [formData, setFormData] = useState({
-    destination: '',
-    transportType: '',
-    duration: '',
-  });
-
-  // State for error handling and success
-  const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
-
-  // Handle form input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    
-    setSuccessMessage(null);  // Reset success message on new submission
-    setError(null);  // Reset previous error
-
-    try {
-      // Send POST request to the backend to save the item and send email
-      const response = await fetch('http://localhost:5000/items', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),  // Send the form data as JSON
-      });
-
-      const responseData = await response.json();
-
-      if (response.ok) {
-        setSuccessMessage('Item added successfully!');  // Set success message
-        setFormData({ destination: '', transportType: '', duration: '' });  // Clear form fields
-      } else {
-        setError(responseData.error || 'Something went wrong');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setError('An error occurred while submitting the form. Please try again.');
-    }
+  const iconStyle = {
+    marginRight: '5px',
   };
 
   return (
     <div>
-      <form style={formStyle} onSubmit={handleSubmit}>
+      <form style={formStyle}>
         <div style={boxStyle}>
           <label>Destination</label>
-          <input
-            type="text"
-            name="destination"
-            placeholder="Enter a location (e.g., Paris)"
-            value={formData.destination}
-            onChange={handleChange}
-          />
+          <input type="text" placeholder="Location" />
         </div>
         <div style={boxStyle}>
           <label>Transport Type</label>
-          <input
-            type="text"
-            name="transportType"
-            placeholder="e.g., Car, Train, Plane"
-            value={formData.transportType}
-            onChange={handleChange}
-          />
+          <input type="text" placeholder="e.g.waterways" />
         </div>
         <div style={boxStyle}>
-          <label>Duration</label>
-          <input
-            type="text"
-            name="duration"
-            placeholder="e.g., 2 hours, 5 hours"
-            value={formData.duration}
-            onChange={handleChange}
-          />
+          <label>Time Duration</label>
+          <input type="text" placeholder="In days" />
         </div>
-        <button type="submit" style={buttonStyle}>
-          <i className="fa fa-search" style={{ marginRight: '5px' }}></i> Submit
+        <div style={boxStyle}>
+          <h4>Advanced Filter</h4>
+        </div>
+        <button style={buttonStyle}>
+          <i className="fa fa-search" style={iconStyle}></i> Search
         </button>
       </form>
 

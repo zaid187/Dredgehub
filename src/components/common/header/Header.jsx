@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./header.css";
 import { nav } from "../../data/Data";
 import { Link } from "react-router-dom";
+ //import  Mylist  from "./Mylist"; Adjust path as needed
 
 const Header = () => {
   const [navList, setNavList] = useState(false);
@@ -29,6 +30,7 @@ const Header = () => {
     }
   };
 
+  
   return (
     <>
       <header>
@@ -53,6 +55,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="button flex">
+<<<<<<< HEAD
             <h4>
               <span></span> My List
             </h4>
@@ -64,6 +67,11 @@ const Header = () => {
                   <i className="fa fa-sign-out"></i> Login/Signup
                 </>
               )}
+=======
+            {/* Navigate to My List manually */}
+            <button className="btn1" onClick={handleSignInClick}>
+              <i className="fa fa-sign-out"></i> Sign Up/Log In
+>>>>>>> 7b3659392253623218b5c8970e8540e14ea0d5cf
             </button>
           </div>
 

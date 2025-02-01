@@ -1,4 +1,5 @@
 .featured .box {
+  background-color: white;
   box-shadow: 0 0 20px 0 rgb(112 121 138 / 18%);
   border-radius: 6px;
   text-align: center;

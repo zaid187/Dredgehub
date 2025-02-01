@@ -1,15 +1,16 @@
 .footerContact {
-  background-color: #6993f5 ;
+  background-color: #7AB2D3;
   padding: 40px 0;
-  color: #fff;
+  color: #DFF2EB;
 }
 .footerContact h1 {
   font-size: 40px;
+  color: #4b638b;
 }
 footer {
-  background-color: #1d2636;
+  background-color: #4A628A;
   padding: 50px 0;
-  color: #fff;
+  color: #DFF2EB;
 }
 footer .container {
   display: grid;
@@ -21,35 +22,38 @@ footer img {
 }
 footer h2 {
   font-weight: 500;
+  color: #DFF2EB;
 }
 footer p {
-  color: grey;
+  color: #B9E5E8;
   margin: 20px 0;
 }
 footer input {
-  background-color: #fff;
+  background-color: #DFF2EB;
   padding: 17px;
   width: 100%;
   border-radius: 5px;
+  color: #4A628A;
 }
 footer h3 {
   font-weight: 500;
   margin-bottom: 30px;
+  color: #DFF2EB;
 }
 footer ul {
   display: block;
 }
 footer ul li {
   display: block;
-  color: grey;
+  color: #B9E5E8;
   margin-bottom: 20px;
 }
 .legal {
   text-align: center;
   padding: 20px;
-  background: #1d2636;
-  color: rgba(255, 255, 255, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #7AB2D3;
+  color: #DFF2EB;
+  border-top: 1px solid rgba(223, 242, 235, 0.2);
 }
 @media screen and (max-width: 800px) {
   footer .container {

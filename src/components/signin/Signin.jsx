@@ -4,6 +4,7 @@ import axios from "axios"; // To make HTTP requests
 const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
     // Check if the username and password match the admin credentials
@@ -33,6 +34,10 @@ const SignIn = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="signin-container">
       <div className="signin-image"></div>
@@ -51,15 +56,32 @@ const SignIn = () => {
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="password-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password-btn"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? "Hide" : "Show"} 
+              </button>
+            </div>
           </div>
+<<<<<<< HEAD
           <button type="button" className="btn1" onClick={handleLogin}>
+=======
+          <button
+            type="button"
+            className="btn1"
+            onClick={openDashboard}
+          >
+>>>>>>> 7b3659392253623218b5c8970e8540e14ea0d5cf
             Log In
           </button>
         </form>
@@ -77,4 +99,9 @@ const SignIn = () => {
   );
 };
 
+<<<<<<< HEAD
 export default SignIn;
+=======
+export default SignIn;
+
+>>>>>>> 7b3659392253623218b5c8970e8540e14ea0d5cf
