@@ -46,7 +46,7 @@ export const featured = [
 export const list = [
   {
     id: 1,
-    cover: "../images/list/",
+    cover: "../images/list/dredgealpha.jpg",
     name: "Dredge Alpha",
     location: "Mumbai",
     category: "For Rent",
@@ -55,7 +55,7 @@ export const list = [
   },
   {
     id: 2,
-    cover: "../images/list/",
+    cover: "../images/list/cargotitan.jpg",
     name: "Cargo Titan",
     location: "Visakhapatnam",
     category: "For Rent",
@@ -64,7 +64,7 @@ export const list = [
   },
   {
     id: 3,
-    cover: "../images/list/",
+    cover: "../images/list/vesselexplorer.jpg",
     name: "Vessel Explorer",
     location: "Gujarat",
     category: "For Rent",
@@ -73,7 +73,7 @@ export const list = [
   },
   {
     id: 4,
-    cover: "../images/list/",
+    cover: "../images/list/dredgebeta.jpg",
     name: "Dredge Beta",
     location: "Chennai",
     category: "For Rent",
@@ -82,7 +82,7 @@ export const list = [
   },
   {
     id: 5,
-    cover: "../images/list/",
+    cover: "../images/list/cargohercules.jpg",
     name: "Cargo Hercules",
     location: "Kolkata",
     category: "For Rent",
@@ -91,39 +91,14 @@ export const list = [
   },
   {
     id: 6,
-    cover: "../images/list/",
+    cover: "../images/list/vessel pioneer.jpg",
     name: "Vessel Pioneer",
     location: "Goa",
     category: "For Rent",
     price: "₹1,20,000/day",
     type: "Vessel",
   },
-  {
-    id: 7,
-    cover: "../images/list/",
-    name: "Dredge Gamma",
-    location: "Cochin",
-    category: "For Rent",
-    price: "₹55,000/day",
-    type: "Dredge",
-  },
-  {
-    id: 8,
-    cover: "../images/list/",
-    name: "Cargo Atlas",
-    location: "Mumbai",
-    category: "For Rent",
-    type: "Cargo",
-  },
-  {
-    id: 9,
-    cover: "../images/list/",
-    name: "Vessel Voyager",
-    location: "Vizag",
-    category: "For Rent",
-    price: "₹1,50,000/day",
-    type: "Vessel",
-  },
+  
 ]
 
 export const awards = []

@@ -7,25 +7,20 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
-    // Check if the username and password match the admin credentials
     if (username === "asmarinesadmin" && password === "arshad03") {
-      
       window.location.href = "/admindashboard"; // Redirect to Admin Dashboard
-      return; // Exit the function to prevent further checks
+      return;
     }
 
     try {
-      // Make an API request to the backend for general user login
       const response = await axios.post("http://localhost:4000/api/auth/login", {
         username: username,
         password: password,
       });
 
-      // If login is successful, store the username and redirect to the home page
       if (response.status === 200) {
-        localStorage.setItem("username", username); // Store the username in localStorage
-        
-        window.location.href = "/"; // Redirect to the home page
+        localStorage.setItem("username", username);
+        window.location.href = "/";
       } else {
         alert("Invalid username or password");
       }
@@ -56,32 +51,35 @@ const SignIn = () => {
           </div>
           <div className="form-group">
             <label>Password</label>
-            <div className="password-container">
+            <div style={{ position: "relative" }}>
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                style={{ width: "100%", paddingRight: "40px" }}
               />
               <button
                 type="button"
-                className="toggle-password-btn"
                 onClick={togglePasswordVisibility}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "#7AB2D3",
+                }}
               >
-                {showPassword ? "Hide" : "Show"} 
+                {showPassword ? "Hide" : "Show"}
               </button>
             </div>
           </div>
-<<<<<<< HEAD
+
           <button type="button" className="btn1" onClick={handleLogin}>
-=======
-          <button
-            type="button"
-            className="btn1"
-            onClick={openDashboard}
-          >
->>>>>>> 7b3659392253623218b5c8970e8540e14ea0d5cf
             Log In
           </button>
         </form>
@@ -99,9 +97,4 @@ const SignIn = () => {
   );
 };
 
-<<<<<<< HEAD
-export default SignIn;
-=======
 export default SignIn;
-
->>>>>>> 7b3659392253623218b5c8970e8540e14ea0d5cf

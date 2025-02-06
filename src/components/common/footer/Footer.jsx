@@ -3,6 +3,10 @@ import { footer } from "../../data/Data"
 import "./footer.css"
 
 const Footer = () => {
+  const handleNavigation = () => {
+    window.location.href = "/contact"; // Redirects to contact page
+  }
+
   return (
     <>
       <section className='footerContact'>
@@ -12,7 +16,7 @@ const Footer = () => {
               <h1>Do You Have Questions ?</h1>
               <p>We'll help you to grow your career and growth.</p>
             </div>
-            <button className='btn5'>Contact Us Today</button>
+            <button className='btn5' onClick={handleNavigation}>Contact Us Today</button>
           </div>
         </div>
       </section>
@@ -23,7 +27,7 @@ const Footer = () => {
             <div className='logo'>
               <img src='../images/logo-light.png' alt='' />
               <h2>Do You Need Help With Anything?</h2>
-              <p>Receive updates sent straignt in your inbox every month</p>
+              <p>Receive updates sent straight to your inbox every month</p>
 
               <div className='input flex'>
                 <input type='text' placeholder='Email Address' />
@@ -32,12 +36,12 @@ const Footer = () => {
             </div>
           </div>
 
-          {footer.map((val) => (
-            <div className='box'>
+          {footer.map((val, index) => (
+            <div className='box' key={index}>
               <h3>{val.title}</h3>
               <ul>
-                {val.text.map((items) => (
-                  <li> {items.list} </li>
+                {val.text.map((items, idx) => (
+                  <li key={idx}> {items.list} </li>
                 ))}
               </ul>
             </div>
@@ -51,4 +55,4 @@ const Footer = () => {
   )
 }
 
-export default Footer 
+export default Footer

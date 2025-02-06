@@ -16,11 +16,7 @@
 /* Left section for the image */
 .signin-image {
   flex: 1;
-<<<<<<< HEAD
   background-image: url('lighthouse.jpg'); /* Replace with your image path */
-=======
-  background-image: url('/Users/shubz8/Documents/fyp/Dredgehub/public/images/signinbg.png'); /* Replace with your image path */
->>>>>>> 7b3659392253623218b5c8970e8540e14ea0d5cf
   background-size: cover;
   background-position: center;
   border-radius: 8px 0 0 8px; /* Rounded corners only on the left */
@@ -136,149 +132,11 @@
     font-size: 14px; /* Reduced font size */
   }
 
-  .signin-form .btn1 {/* General container for the sign-in/sign-up form */
-    .signin-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap; /* Makes it responsive */
-      width: 90%; /* Adjusted for smaller screens */
-      max-width: 900px;
-      margin: 50px auto;
-      background: #DFF2EB;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-    
-    /* Left section for the image */
-    .signin-image {
-      flex: 1;
-      background-image: url('/Users/shubz8/Documents/fyp/Dredgehub/public/images/signinbg.png'); /* Replace with your image path */
-      background-size: cover;
-      background-position: center;
-      border-radius: 8px 0 0 8px; /* Rounded corners only on the left */
-      height: 400px; /* Fixed height for the image */
-      min-height: 300px; /* Ensures the image doesn't disappear on small screens */
-    }
-    
-    /* Right section for the form */
-    .signin-form-container {
-      flex: 1;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-color: #B9E5E8;
-    }
-    
-    .signin-form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #4A628A;
-    }
-    
-    .signin-form .form-group {
-      margin-bottom: 15px;
-    }
-    
-    .signin-form .form-group label {
-      font-size: 16px;
-      font-weight: bold;
-      color: #4A628A;
-    }
-    
-    .signin-form .form-group input {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #7AB2D3;
-      border-radius: 4px;
-      transition: border 0.3s ease;
-    }
-    
-    .signin-form .form-group input:focus {
-      border-color: #4A628A;
-      outline: none;
-    }
-    
-    .signin-form .btn1 {
-      width: 100%;
-      padding: 12px;
-      background: #7AB2D3;
-      color: #DFF2EB;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    
-    .signin-form .btn1:hover {
-      background: #4A628A;
-    }
-    
-    .signin-footer {
-      text-align: center;
-      margin-top: 20px;
-    }
-    
-    .signin-footer p {
-      font-size: 14px;
-      color: #4A628A;
-    }
-    
-    .signin-footer button {
-      font-weight: bold;
-      color: #DFF2EB;
-      background: #7AB2D3;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    
-    .signin-footer button:hover {
-      background: #4A628A;
-    }
-    
-    /* Responsive adjustments for smaller screens */
-    @media (max-width: 768px) {
-      .signin-container {
-        flex-direction: column; /* Stack image and form */
-      }
-    
-      .signin-image {
-        width: 100%; /* Full width on smaller screens */
-        border-radius: 8px 8px 0 0; /* Rounded top corners */
-        height: 200px; /* Reduced height */
-      }
-    
-      .signin-form-container {
-        padding: 20px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .signin-form-container h2 {
-        font-size: 20px; /* Slightly smaller heading */
-      }
-    
-      .signin-form .form-group input {
-        padding: 10px;
-        font-size: 14px; /* Reduced font size */
-      }
-    
-      .signin-form .btn1 {
-        font-size: 14px; /* Smaller button text */
-      }
-    }
-    
+  .signin-form .btn1 {
     font-size: 14px; /* Smaller button text */
   }
-} 
+}
+
 /* Style for the Show/Hide button */
 .password-toggle-button {
   position: absolute;

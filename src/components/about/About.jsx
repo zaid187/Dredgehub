@@ -1,18 +1,12 @@
-<<<<<<< HEAD
-import React from "react"
-import Back from "../common/Back"
-import Heading from "../common/Heading"
-import img from "../../assets/images/aboutus.jpg";
-import "./about.css"
-=======
-import React from "react";
+import React, { useState } from "react";
 import Back from "../common/Back";
 import Heading from "../common/Heading";
-import img from "/Users/shubz8/Documents/fyp/Dredgehub/src/components/images/aboutus.jpg";
+import img from "../../assets/images/aboutus.jpg";
 import "./about.css";
->>>>>>> 7b3659392253623218b5c8970e8540e14ea0d5cf
 
 const About = () => {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <>
       <section className="about">
@@ -37,16 +31,24 @@ const About = () => {
               with reliable equipment and unmatched expertise. Let us help you
               bring your vision to life!
             </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip.
-            </p>
-            <button className="btn2">More About Us</button>
+            
+            {showMore && (
+              <p>
+                Our team consists of industry experts with years of experience
+                in maritime solutions. We take pride in delivering exceptional
+                service, maintaining transparency in all our dealings, and
+                continuously improving our offerings to serve you better. From
+                small-scale projects to large infrastructural developments, we
+                ensure that our clients receive the best possible support.
+              </p>
+            )}
+
+            <button className="btn2" onClick={() => setShowMore(!showMore)}>
+              {showMore ? "Show Less" : "More About Us"}
+            </button>
           </div>
           <div className="right row">
-            <img src="./immio.jpg" alt="" />
+            <img src="./immio.jpg" alt="Company" />
           </div>
         </div>
       </section>

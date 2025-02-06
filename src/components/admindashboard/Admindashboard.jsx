@@ -1,45 +1,41 @@
-import React, { useState } from "react";
-import "./admindashboard.css"; // Assuming admindashboard.css is in the same folder
+import React, { useState, useEffect } from "react";
+import "./admindashboard.css";
 
 const Admindashboard = () => {
-  // State to manage the visibility of the Quotes and Queries list
   const [showQuotes, setShowQuotes] = useState(false);
   const [showQueries, setShowQueries] = useState(false);
+  const [quotes, setQuotes] = useState([]);
+  const [queries, setQueries] = useState([]);
 
-  // Sample data for quotes and queries (to simulate real data)
-  const quotes = [
-    { id: 1, name: "Quote #1", status: "Pending" },
-    { id: 2, name: "Quote #2", status: "Completed" },
-    { id: 3, name: "Quote #3", status: "In Progress" },
-  ];
-
-  const queries = [
-    { id: 1, name: "Query #1", status: "Resolved" },
-    { id: 2, name: "Query #2", status: "Unresolved" },
-    { id: 3, name: "Query #3", status: "In Progress" },
-  ];
-
-  // State to manage selected items for quotes and queries
-  const [selectedQuotes, setSelectedQuotes] = useState([]);
-  const [selectedQueries, setSelectedQueries] = useState([]);
-
-  // Handle checkbox toggle for Quotes
-  const handleQuoteChange = (id) => {
-    setSelectedQuotes((prevState) =>
-      prevState.includes(id)
-        ? prevState.filter((quoteId) => quoteId !== id)
-        : [...prevState, id]
-    );
+  // Fetch quotes from localStorage
+  const fetchQuotes = () => {
+    const storedQuotes = localStorage.getItem("quotes");
+    if (storedQuotes) {
+      setQuotes(JSON.parse(storedQuotes));
+    }
   };
 
-  // Handle checkbox toggle for Queries
-  const handleQueryChange = (id) => {
-    setSelectedQueries((prevState) =>
-      prevState.includes(id)
-        ? prevState.filter((queryId) => queryId !== id)
-        : [...prevState, id]
-    );
+  // Fetch queries from localStorage
+  const fetchQueries = () => {
+    const storedQueries = localStorage.getItem("queries");
+    if (storedQueries) {
+      setQueries(JSON.parse(storedQueries));
+    }
   };
+
+  useEffect(() => {
+    fetchQuotes(); // Load quotes initially
+    fetchQueries(); // Load queries initially
+
+    // Listen for localStorage changes
+    window.addEventListener("storage", fetchQuotes);
+    window.addEventListener("storage", fetchQueries);
+
+    return () => {
+      window.removeEventListener("storage", fetchQuotes);
+      window.removeEventListener("storage", fetchQueries);
+    };
+  }, []);
 
   return (
     <div className="dashboard-container">
@@ -53,8 +49,8 @@ const Admindashboard = () => {
         <div className="card" onClick={() => setShowQuotes(!showQuotes)}>
           <i className="fa fa-shopping-cart"></i>
           <div>
-            <h3>Quotes raised</h3>
-            <p></p>
+            <h3>Quotes Raised</h3>
+            <p>{quotes.length}</p>
             <span>+10% from yesterday</span>
           </div>
         </div>
@@ -62,8 +58,8 @@ const Admindashboard = () => {
         <div className="card" onClick={() => setShowQueries(!showQueries)}>
           <i className="fa fa-box"></i>
           <div>
-            <h3>Query filled</h3>
-            <p></p>
+            <h3>Query Filled</h3>
+            <p>{queries.length}</p>
             <span>+8% from yesterday</span>
           </div>
         </div>
@@ -76,25 +72,19 @@ const Admindashboard = () => {
           <table>
             <thead>
               <tr>
-                <th>Check</th>
                 <th>#</th>
-                <th>Name</th>
-                <th>Status</th>
+                <th>Destination</th>
+                <th>Transport Type</th>
+                <th>Duration</th>
               </tr>
             </thead>
             <tbody>
-              {quotes.map((quote) => (
-                <tr key={quote.id}>
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={selectedQuotes.includes(quote.id)}
-                      onChange={() => handleQuoteChange(quote.id)}
-                    />
-                  </td>
-                  <td>{quote.id}</td>
-                  <td>{quote.name}</td>
-                  <td>{quote.status}</td>
+              {quotes.map((quote, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{quote.destination}</td>
+                  <td>{quote.transportType}</td>
+                  <td>{quote.duration}</td>
                 </tr>
               ))}
             </tbody>
@@ -102,32 +92,26 @@ const Admindashboard = () => {
         </div>
       )}
 
-      {/* Queries List */}
+      {/* Query List */}
       {showQueries && (
         <div className="queries-list">
           <h3>List of Queries</h3>
           <table>
             <thead>
               <tr>
-                <th>Check</th>
                 <th>#</th>
                 <th>Name</th>
-                <th>Status</th>
+                <th>Email</th>
+                <th>Message</th>
               </tr>
             </thead>
             <tbody>
-              {queries.map((query) => (
-                <tr key={query.id}>
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={selectedQueries.includes(query.id)}
-                      onChange={() => handleQueryChange(query.id)}
-                    />
-                  </td>
-                  <td>{query.id}</td>
+              {queries.map((query, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
                   <td>{query.name}</td>
-                  <td>{query.status}</td>
+                  <td>{query.email}</td>
+                  <td>{query.message}</td>
                 </tr>
               ))}
             </tbody>
@@ -135,11 +119,11 @@ const Admindashboard = () => {
         </div>
       )}
 
+      {/* Preserving the rest of your dashboard layout */}
       <div className="analytics">
         <div className="level-chart">
           <h3>Level</h3>
           <div className="chart-placeholder">
-            {/* Bar Chart Placeholder */}
             <div className="bar-chart">
               <div className="bar" style={{ height: "60%" }}></div>
               <div className="bar" style={{ height: "40%" }}></div>
@@ -147,6 +131,7 @@ const Admindashboard = () => {
             </div>
           </div>
         </div>
+
         <div className="top-products">
           <h3>Top Products</h3>
           <table>
@@ -181,28 +166,6 @@ const Admindashboard = () => {
                 </td>
                 <td>62%</td>
               </tr>
-              <tr>
-                <td>03</td>
-                <td>Vessel Explorer</td>
-                <td>
-                  <div className="popularity">
-                    <div className="progress-bar" style={{ width: "51%" }}></div>
-                    <span>51%</span>
-                  </div>
-                </td>
-                <td>51%</td>
-              </tr>
-              <tr>
-                <td>04</td>
-                <td>Vessel Voyager</td>
-                <td>
-                  <div className="popularity">
-                    <div className="progress-bar" style={{ width: "29%" }}></div>
-                    <span>29%</span>
-                  </div>
-                </td>
-                <td>29%</td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -211,4 +174,4 @@ const Admindashboard = () => {
   );
 };
 
-export default Admindashboard;
+export default Admindashboard;
