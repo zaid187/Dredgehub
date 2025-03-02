@@ -59,7 +59,7 @@ export const Pricing = () => {
     window.dispatchEvent(new Event("storage"));
 
     try {
-      const response = await fetch("http://localhost:5000/items", {
+      const response = await fetch("https://travel-list-app.onrender.com/items", {  // ✅ Updated API URL
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
@@ -211,6 +211,6 @@ const styles = {
     borderRadius: "6px",
     cursor: "pointer",
     fontSize: "16px",
-    fontWeight: "bold",
-  },
+    fontWeight: "bold",
+  },
 };

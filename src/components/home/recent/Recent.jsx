@@ -8,7 +8,7 @@ const Recent = () => {
     <>
       <section className='recent padding'>
         <div className='container'>
-          <Heading title='Recent Orders' subtitle='L' />
+          <Heading title='Recent Orders' subtitle='' />
           <RecentCard />
         </div>
       </section>
