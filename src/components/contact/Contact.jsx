@@ -29,7 +29,7 @@ const Contact = () => {
       window.dispatchEvent(new Event("storage")); // Notify other components
 
       // Send data to backend
-      const response = await fetch("https://contact-data-gy1m.onrender.com", {
+      const response = await fetch("https://contact-data-gy1m.onrender.com/api/contact", { // ✅ Updated API URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,4 +96,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contact;
