@@ -17,24 +17,18 @@ const SignUp = () => {
     }
 
     try {
-      const response = await axios.post("https://user-credentials-arfa.onrender.com", {
-        username,
-        email,
-        password,
-        confirmPassword,
-      });
+      const response = await axios.post(
+        "https://user-credentials-arfa.onrender.com/api/auth/signup", // ✅ Updated API URL
+        { username, email, password }
+      );
 
       if (response.status === 201) {
         alert("Account created successfully! Please log in.");
-        window.location.href = "/signin"; // Redirect to the sign-in page
+        window.location.href = "/signin"; // Redirect to sign-in page
       }
     } catch (err) {
       console.error("Error during signup:", err);
-      if (err.response && err.response.data.message) {
-        setError(err.response.data.message);
-      } else {
-        setError("An error occurred. Please try again.");
-      }
+      setError(err.response?.data?.message || "An error occurred. Please try again.");
     }
   };
 
@@ -44,14 +38,12 @@ const SignUp = () => {
 
   return (
     <div className="signin-container">
-      {/* Left section for the image */}
       <div className="signin-image"></div>
-
-      {/* Right section for the form */}
       <div className="signin-form-container">
         <form className="signin-form" onSubmit={(e) => e.preventDefault()}>
           <h2>Sign Up</h2>
           {error && <p style={{ color: "red" }}>{error}</p>}
+
           <div className="form-group">
             <label>Username</label>
             <input
@@ -62,6 +54,7 @@ const SignUp = () => {
               required
             />
           </div>
+
           <div className="form-group">
             <label>Email</label>
             <input
@@ -72,9 +65,10 @@ const SignUp = () => {
               required
             />
           </div>
+
           <div className="form-group">
             <label>Password</label>
-            <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+            <div style={{ position: "relative" }}>
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
@@ -93,16 +87,16 @@ const SignUp = () => {
                   border: "none",
                   cursor: "pointer",
                   color: "#7AB2D3",
-                  fontSize: "14px",
                 }}
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
           </div>
+
           <div className="form-group">
             <label>Confirm Password</label>
-            <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+            <div style={{ position: "relative" }}>
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Confirm your password"
@@ -121,25 +115,22 @@ const SignUp = () => {
                   border: "none",
                   cursor: "pointer",
                   color: "#7AB2D3",
-                  fontSize: "14px",
                 }}
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
           </div>
+
           <button type="button" className="btn1" onClick={handleSignUp}>
             Sign Up
           </button>
         </form>
 
-        {/* Footer for toggling between Sign Up and Log In */}
         <div className="signin-footer">
           <p>
             Already have an account?{" "}
-            <button onClick={() => (window.location.href = "/signin")}>
-              Log In
-            </button>
+            <button onClick={() => (window.location.href = "/signin")}>Log In</button>
           </p>
         </div>
       </div>

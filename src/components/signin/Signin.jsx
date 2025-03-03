@@ -13,10 +13,10 @@ const SignIn = () => {
     }
 
     try {
-      const response = await axios.post("https://user-credentials-arfa.onrender.com", {
-        username: username,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://user-credentials-arfa.onrender.com/api/auth/login", // Updated URL
+        { username, password }
+      );
 
       if (response.status === 200) {
         localStorage.setItem("username", username);
