@@ -6,6 +6,7 @@ export const Pricing = () => {
   const [days, setDays] = useState("");
   const [destination, setDestination] = useState("");
   const [selectedItem, setSelectedItem] = useState("");
+  const [loading, setLoading] = useState(false); // ✅ Added loading state
 
   const dredges = ["Dredge Alpha", "Dredge Titan", "Dredge Beta", "Cargo Hercules", "Dredge Gamma"];
   const vessels = ["Vessel Pioneer", "Vessel Explorer", "Vessel Voyager"];
@@ -47,6 +48,8 @@ export const Pricing = () => {
       return;
     }
 
+    setLoading(true); // ✅ Start loading
+
     const requestData = {
       destination,
       transportType: selectedItem,
@@ -59,7 +62,7 @@ export const Pricing = () => {
     window.dispatchEvent(new Event("storage"));
 
     try {
-      const response = await fetch("https://travel-list-app.onrender.com/items", {  // ✅ Updated API URL
+      const response = await fetch("https://travel-list-app.onrender.com/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
@@ -74,6 +77,8 @@ export const Pricing = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Failed to submit request. Please try again later.");
+    } finally {
+      setLoading(false); // ✅ Stop loading
     }
   };
 
@@ -115,13 +120,14 @@ export const Pricing = () => {
           {days && <p style={styles.daysText}>Total Days: {days}</p>}
         </div>
 
-        <button type="submit" style={styles.submitButton}>Submit</button>
+        <button type="submit" style={styles.submitButton} disabled={loading}>
+          {loading ? "Submitting..." : "Submit"}
+        </button>
       </form>
     </div>
   );
 };
 
-// ✅ Improved CSS Styling
 const styles = {
   container: {
     display: "flex",

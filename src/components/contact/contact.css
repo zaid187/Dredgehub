@@ -26,3 +26,26 @@
     width: 100%;
   }
 }
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Adds spacing between fields */
+}
+
+textarea {
+  resize: none; /* Prevents unwanted resizing */
+  min-height: 120px; /* Ensures a consistent height */
+}
+
+.textarea-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Proper spacing for textarea */
+}

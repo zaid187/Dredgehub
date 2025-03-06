@@ -1,66 +1,99 @@
+/* 🔹 Hero Section */
 .hero {
-  background-image: url("../../../../public/images/banner.png");
+  position: relative;
+  background-image: url("../../../../public/images/banner.png"); /* Image path unchanged */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: 90vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
 }
-.hero .container {
-  padding-top: 15%;
-}
-.hero h1 {
-  color: #fff;
-  font-size: 60px;
-}
-.hero p {
-  color: #fff;
-  opacity: 0.8;
-}
-form {
-  background-color: #fff;
-  border-radius: 5px;
-  margin-top: 50px;
-  padding: 0 20px;
-}
-form input {
-  padding: 10px;
+
+/* 🔹 Dark Overlay for Readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  border: 1px solid rgba(128, 128, 128, 0.2);
-  margin-top: 5px;
-  border-radius: 5px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
 }
-form span {
-  
-  font-size: 14px;
-  color: rgb(32, 32, 32);
+
+/* 🔹 Fade-in Animation */
+.hero h1 {
+  font-size: 60px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-in-out forwards;
+  z-index: 2;
 }
-input::placeholder {
-  font-size: 17px;
-  color: rgb(131, 122, 122);
+
+.hero p {
+  font-size: 20px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-in-out 0.3s forwards;
+  z-index: 2;
 }
-form .box {
-  padding: 15px;
-  border-left: 1px solid rgba(128, 128, 128, 0.2);
-}
-form .box:nth-child(1) {
-  border-left: none;
-}
-form h4 {
-  font-weight: 500;
-}
-@media screen and (max-width: 800px) {
-  .hero .container {
-    padding-top: 30%;
+
+/* 🔹 Fade-in Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  form {
-    display: flex;
-    flex-wrap: wrap;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  form .box {
-    border-left: none;
+}
+
+/* 🔹 CTA Button */
+.cta-button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #0056b3, #0099ff);
+}
+
+/* 🔹 Mobile Optimization */
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 70vh; /* Reduce height for smaller screens */
+    padding: 10px;
   }
-  form input {
-    width: 100%;
+
+  .hero h1 {
+    font-size: 36px; /* Adjust text size */
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .cta-button {
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }

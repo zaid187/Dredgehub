@@ -5,6 +5,7 @@ const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state
 
   const handleLogin = async () => {
     if (username === "asmarinesadmin" && password === "arshad03") {
@@ -12,6 +13,7 @@ const SignIn = () => {
       return;
     }
 
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://user-credentials-arfa.onrender.com/api/auth/login", // Updated URL
@@ -27,10 +29,15 @@ const SignIn = () => {
     } catch (error) {
       alert("Error: " + (error.response?.data?.message || error.message));
     }
+    setLoading(false);
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  // Detect "Enter" key press
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleLogin();
+    }
   };
 
   return (
@@ -46,6 +53,7 @@ const SignIn = () => {
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              onKeyDown={handleKeyPress}
               required
             />
           </div>
@@ -57,12 +65,12 @@ const SignIn = () => {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleKeyPress}
                 required
-                style={{ width: "100%", paddingRight: "40px" }}
               />
               <button
                 type="button"
-                onClick={togglePasswordVisibility}
+                onClick={() => setShowPassword(!showPassword)}
                 style={{
                   position: "absolute",
                   right: "10px",
@@ -79,8 +87,8 @@ const SignIn = () => {
             </div>
           </div>
 
-          <button type="button" className="btn1" onClick={handleLogin}>
-            Log In
+          <button type="button" className="btn1" onClick={handleLogin} disabled={loading}>
+            {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
 

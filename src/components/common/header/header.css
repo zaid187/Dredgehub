@@ -1,39 +1,89 @@
+/* 🔹 Header Styling */
 header {
   background-color: #fff;
   height: 10vh;
-  box-shadow: 0 5px 30px rgb(0 22 84 / 10%);
+  box-shadow: 0 5px 30px rgba(0, 22, 84, 0.1);
   padding: 15px 0;
   position: sticky;
   top: 0;
+  width: 100%;
   z-index: 99999;
+  transition: all 0.3s ease-in-out;
 }
+
+/* 🔹 Logo Styling */
 header img {
   width: 170px;
+  transition: transform 0.3s ease-in-out;
 }
+header img:hover {
+  transform: scale(1.05);
+}
+
+/* 🔹 Navigation Links */
 header a {
   margin-left: 30px;
-  transition: 0.5s;
+  transition: color 0.3s ease;
   font-weight: 500;
+  text-decoration: none;
+  color: #333;
 }
 header a:hover {
-  color: #6993f5 ;
+  color: #6993f5;
 }
+
+/* 🔹 Active Link Indicator */
+header a.active {
+  color: #6993f5;
+  font-weight: bold;
+  border-bottom: 2px solid #6993f5;
+}
+
+/* 🔹 Header Highlight */
 header span {
-  width: auto;
   padding: 0px 6px;
-  background: #6993f5 ;
+  background: #6993f5;
   border-radius: 50px;
-  color: #ffffff;
+  color: white;
   margin-right: 4px;
   font-weight: 400;
 }
+
+/* 🔹 Header Title */
 header h4 {
   font-weight: 500;
   margin-right: 20px;
 }
+
+/* 🔹 Mobile Menu Toggle (Hidden by Default) */
 header .toggle {
   display: none;
 }
+
+/* 🔹 Login / Signup Button */
+.btn1 {
+  background-color: #7AB2D3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn1 i {
+  font-size: 18px;
+}
+
+.btn1:hover {
+  background-color: #5c9ec9;
+  transform: scale(1.05);
+}
+
+/* 🔹 Mobile Responsiveness */
 @media screen and (max-width: 768px) {
   header {
     padding: 0;
@@ -47,30 +97,31 @@ header .toggle {
   header .nav .flex {
     display: none;
   }
+
+  /* 🔹 Mobile Toggle Button */
   header .toggle {
     display: block;
     margin-top: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
+
+  /* 🔹 Mobile Menu */
   header .small {
     position: absolute;
     top: 10vh;
     left: 0;
     width: 100%;
-    background-color: #7AB2D3 ;
+    background-color: #7AB2D3;
     padding: 20px;
+    text-align: center;
   }
+
   header li a {
     display: inline-block;
     margin-bottom: 20px;
     color: #fff;
   }
-}
-
-.btn1 {
-  background-color: #7AB2D3; /* Change this to your desired color */
-  color: white; /* Text color */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
