@@ -23,6 +23,20 @@ const Admindashboard = () => {
     }
   };
 
+  // Handle quote deletion
+  const handleDeleteQuote = (index) => {
+    const updatedQuotes = quotes.filter((_, i) => i !== index);
+    setQuotes(updatedQuotes);
+    localStorage.setItem("quotes", JSON.stringify(updatedQuotes));
+  };
+
+  // Handle query deletion
+  const handleDeleteQuery = (index) => {
+    const updatedQueries = queries.filter((_, i) => i !== index);
+    setQueries(updatedQueries);
+    localStorage.setItem("queries", JSON.stringify(updatedQueries));
+  };
+
   useEffect(() => {
     fetchQuotes(); // Load quotes initially
     fetchQueries(); // Load queries initially
@@ -76,6 +90,7 @@ const Admindashboard = () => {
                 <th>Destination</th>
                 <th>Transport Type</th>
                 <th>Duration</th>
+                <th>Clear</th>
               </tr>
             </thead>
             <tbody>
@@ -85,6 +100,12 @@ const Admindashboard = () => {
                   <td>{quote.destination}</td>
                   <td>{quote.transportType}</td>
                   <td>{quote.duration}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      onChange={() => handleDeleteQuote(index)}
+                    />
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -103,6 +124,7 @@ const Admindashboard = () => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Message</th>
+                <th>Clear</th>
               </tr>
             </thead>
             <tbody>
@@ -112,6 +134,12 @@ const Admindashboard = () => {
                   <td>{query.name}</td>
                   <td>{query.email}</td>
                   <td>{query.message}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      onChange={() => handleDeleteQuery(index)}
+                    />
+                  </td>
                 </tr>
               ))}
             </tbody>

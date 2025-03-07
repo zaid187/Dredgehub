@@ -4,6 +4,7 @@ import { list } from "../../data/Data";
 const RecentCard = () => {
   const cardRefs = useRef([]);
   const [popup, setPopup] = useState({ show: false, message: "", redirect: false });
+  const [hoverIndex, setHoverIndex] = useState(null); // ✅ Track which card is hovered
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,6 +41,7 @@ const RecentCard = () => {
 
   return (
     <div>
+      {/* ✅ Pop-up for confirmation */}
       {popup.show && (
         <div style={{
           position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
@@ -50,34 +52,61 @@ const RecentCard = () => {
           <button onClick={handleClosePopup} style={{ padding: "10px 20px", background: "#007bff", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>OK</button>
         </div>
       )}
+
+      {/* ✅ Card Grid */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
         {list.map((val, index) => {
-          const { cover, category, location, name, type } = val;
+          const { cover, category, location, name } = val;
+
           return (
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
+              onMouseEnter={() => setHoverIndex(index)} // ✅ Detect hover
+              onMouseLeave={() => setHoverIndex(null)} // ✅ Remove hover
               style={{
-                background: "#fff", borderRadius: "12px", padding: "20px",
-                transition: "transform 0.5s ease, opacity 0.5s ease",
-                opacity: 0, transform: "translateY(50px)", cursor: "pointer",
-                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
+                background: "#fff",
+                borderRadius: "12px",
+                padding: "20px",
+                transition: "transform 0.5s ease, opacity 0.5s ease, border 0.3s ease",
+                opacity: 0,
+                transform: "translateY(50px)",
+                cursor: "pointer",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                border: hoverIndex === index ? "2px solid #007bff" : "2px solid transparent" // ✅ Blue border on hover
               }}
             >
               <div>
                 <img src={cover} alt='' style={{ width: "100%", borderRadius: "12px" }} />
               </div>
               <div style={{ marginTop: "15px" }}>
-                <span style={{ background: category === "For Rent" ? "#25b5791a" : "#ff98001a", padding: "5px 10px", borderRadius: "8px" }}>{category}</span>
+                <span style={{
+                  background: category === "For Rent" ? "#25b5791a" : "#ff98001a",
+                  padding: "5px 10px",
+                  borderRadius: "8px"
+                }}>
+                  {category}
+                </span>
                 <h4>{name}</h4>
                 <p>{location}</p>
               </div>
+
+              {/* ✅ Button to add to Pricing */}
               <button onClick={() => handleAddToPricing(name)} style={{
-                background: "#7AB2D3", color: "#fff", border: "none",
-                borderRadius: "50%", width: "35px", height: "35px",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                cursor: "pointer", fontSize: "16px"
-              }}>+</button>
+                background: "#7AB2D3",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                width: "35px",
+                height: "35px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                fontSize: "16px"
+              }}>
+                +
+              </button>
             </div>
           );
         })}
@@ -86,4 +115,4 @@ const RecentCard = () => {
   );
 };
 
-export default RecentCard;
+export default RecentCard;
