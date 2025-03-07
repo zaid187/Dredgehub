@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { list } from "../../data/Data";
 
 const RecentCard = () => {
-  const cardRefs = useRef([]); // Store references to each card
+  const cardRefs = useRef([]);
+  const [popup, setPopup] = useState({ show: false, message: "", redirect: false });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,88 +30,58 @@ const RecentCard = () => {
 
   const handleAddToPricing = (name) => {
     localStorage.setItem("selectedDredge", name);
-    alert(`${name} has been added to Pricing!`);
+    setPopup({ show: true, message: `${name} has been added to Pricing!`, redirect: true });
+  };
+
+  const handleClosePopup = () => {
+    setPopup({ show: false, message: "", redirect: false });
     window.location.href = "./pricing";
   };
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
-      {list.map((val, index) => {
-        const { cover, category, location, name, price, type } = val;
-        return (
-          <div
-            key={index}
-            ref={(el) => (cardRefs.current[index] = el)} // Attach reference
-            style={{
-              background: "#fff",
-              borderRadius: "12px",
-              border: "2px solid transparent", // Default transparent border
-              padding: "20px",
-              transition: "transform 0.5s ease, opacity 0.5s ease, border-color 0.3s",
-              opacity: 0, // Initially hidden
-              transform: "translateY(50px)", // Move down initially
-              cursor: "pointer",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.boxShadow = "0 10px 20px rgba(0, 123, 255, 0.2)";
-              e.currentTarget.style.borderColor = "#007bff"; // Blue border on hover
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-              e.currentTarget.style.borderColor = "transparent"; // Reset border
-            }}
-          >
-            <div>
-              <img src={cover} alt='' style={{ width: "100%", borderRadius: "12px" }} />
-            </div>
-            <div style={{ marginTop: "15px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span
-                  style={{
-                    background: category === "For Rent" ? "#25b5791a" : "#ff98001a",
-                    color: category === "For Rent" ? "#25b579" : "#ff9800",
-                    padding: "5px 10px",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                  }}
-                >
-                  {category}
-                </span>
-                <span style={{ color: "#333", fontSize: "14px", fontWeight: "500" }}>{type}</span>
+    <div>
+      {popup.show && (
+        <div style={{
+          position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+          background: "white", padding: "40px", boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+          borderRadius: "12px", zIndex: 1000, textAlign: "center", width: "300px"
+        }}>
+          <p style={{ fontSize: "18px", marginBottom: "20px" }}>{popup.message}</p>
+          <button onClick={handleClosePopup} style={{ padding: "10px 20px", background: "#007bff", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>OK</button>
+        </div>
+      )}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+        {list.map((val, index) => {
+          const { cover, category, location, name, type } = val;
+          return (
+            <div
+              key={index}
+              ref={(el) => (cardRefs.current[index] = el)}
+              style={{
+                background: "#fff", borderRadius: "12px", padding: "20px",
+                transition: "transform 0.5s ease, opacity 0.5s ease",
+                opacity: 0, transform: "translateY(50px)", cursor: "pointer",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
+              }}
+            >
+              <div>
+                <img src={cover} alt='' style={{ width: "100%", borderRadius: "12px" }} />
               </div>
-              <h4>{name}</h4>
-              <p>
-                <i className='fa fa-location-dot'></i> {location}
-              </p>
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "15px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <button
-                  style={{
-                    background: "#7AB2D3",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "50%",
-                    width: "24px",
-                    height: "24px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    cursor: "pointer",
-                    fontSize: "16px",
-                  }}
-                  onClick={() => handleAddToPricing(name)}
-                >
-                  +
-                </button>
+              <div style={{ marginTop: "15px" }}>
+                <span style={{ background: category === "For Rent" ? "#25b5791a" : "#ff98001a", padding: "5px 10px", borderRadius: "8px" }}>{category}</span>
+                <h4>{name}</h4>
+                <p>{location}</p>
               </div>
+              <button onClick={() => handleAddToPricing(name)} style={{
+                background: "#7AB2D3", color: "#fff", border: "none",
+                borderRadius: "50%", width: "35px", height: "35px",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                cursor: "pointer", fontSize: "16px"
+              }}>+</button>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

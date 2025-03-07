@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [navList, setNavList] = useState(false);
   const [username, setUsername] = useState(null);
+  const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -18,15 +19,29 @@ const Header = () => {
     if (username) {
       localStorage.removeItem("username");
       setUsername(null);
-      alert("Logged out successfully");
-      window.location.href = "/";
+      setPopup(true);
     } else {
       window.location.href = "/signin";
     }
   };
 
+  const handleClosePopup = () => {
+    setPopup(false);
+    window.location.href = "/";
+  };
+
   return (
     <>
+      {popup && (
+        <div style={{
+          position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+          background: "white", padding: "40px", boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+          borderRadius: "12px", zIndex: 1000, textAlign: "center", width: "300px"
+        }}>
+          <p style={{ fontSize: "18px", marginBottom: "20px" }}>Logged out successfully</p>
+          <button onClick={handleClosePopup} style={{ padding: "10px 20px", background: "#007bff", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>OK</button>
+        </div>
+      )}
       <header>
         <div className="container flex">
           <div className="logo">
@@ -48,7 +63,6 @@ const Header = () => {
             </ul>
           </div>
           <div className="button flex">
-            {/* Check if the current page is Admin Dashboard */}
             <button className="btn1" onClick={handleButtonClick}>
               {window.location.pathname === "/admindashboard"
                 ? "Admin"
@@ -71,4 +85,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header;

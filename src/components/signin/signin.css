@@ -77,22 +77,21 @@
 /* ✅ Fixed Login Button - Text Centered */
 .btn1 {
   width: 100%; /* Full width */
-  padding: 12px;
+  padding: 12px; /* Consistent padding */
   font-size: 16px;
   font-weight: bold;
-  text-align: center;
+  text-align: center; /* Center the text horizontally */
   background-color: #2563eb;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
-  display: flex;
-  justify-content: center; /* Ensures text is centered */
-  align-items: center; /* Vertically center */
   margin-top: 10px;
+  display: block; /* Ensure it behaves as a block element */
+  line-height: 1.5; /* Ensure vertical alignment */
 }
+
 .btn1:hover {
   background-color: #1d4ed8;
 }
-

@@ -1,11 +1,17 @@
-import React from "react"
-import { footer } from "../../data/Data"
-import "./footer.css"
+import React, { useState } from "react";
+import { footer } from "../../data/Data";
+import "./footer.css";
 
 const Footer = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   const handleNavigation = () => {
     window.location.href = "/contact"; // Redirects to contact page
-  }
+  };
+
+  const handleSubscribe = () => {
+    setShowPopup(true);
+  };
 
   return (
     <>
@@ -13,7 +19,7 @@ const Footer = () => {
         <div className='container'>
           <div className='send flex'>
             <div className='text'>
-              <h1>Do You Have Questions ?</h1>
+              <h1>Do You Have Questions?</h1>
               <p>We'll help you to grow your career and growth.</p>
             </div>
             <button className='btn5' onClick={handleNavigation}>Contact Us Today</button>
@@ -31,7 +37,7 @@ const Footer = () => {
 
               <div className='input flex'>
                 <input type='text' placeholder='Email Address' />
-                <button>Subscribe</button>
+                <button onClick={handleSubscribe}>Subscribe</button>
               </div>
             </div>
           </div>
@@ -51,8 +57,17 @@ const Footer = () => {
       <div className='legal'>
         <span>© 2025 AS Marines.</span>
       </div>
-    </>
-  )
-}
 
-export default Footer
+      {showPopup && (
+        <div className='popup'>
+          <div className='popup-content'>
+            <p>Our team will reach out to you soon. Thanks for subscribing!</p>
+            <button onClick={() => setShowPopup(false)}>OK</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Footer;

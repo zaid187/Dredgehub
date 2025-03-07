@@ -6,7 +6,10 @@ export const Pricing = () => {
   const [days, setDays] = useState("");
   const [destination, setDestination] = useState("");
   const [selectedItem, setSelectedItem] = useState("");
-  const [loading, setLoading] = useState(false); // ✅ Added loading state
+  const [loading, setLoading] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [redirectToSignin, setRedirectToSignin] = useState(false); // New state for redirect
 
   const dredges = ["Dredge Alpha", "Dredge Titan", "Dredge Beta", "Cargo Hercules", "Dredge Gamma"];
   const vessels = ["Vessel Pioneer", "Vessel Explorer", "Vessel Voyager"];
@@ -38,17 +41,19 @@ export const Pricing = () => {
 
     const username = localStorage.getItem("username");
     if (!username) {
-      alert("Please log in to submit a quote.");
-      window.location.href = "/signin";
+      setModalMessage("Please log in to submit a quote.");
+      setShowModal(true);
+      setRedirectToSignin(true); // Set redirect flag
       return;
     }
 
     if (!destination || !selectedItem || !dateRange.start || !dateRange.end) {
-      alert("Please fill out all the required fields before submitting.");
+      setModalMessage("Please fill out all the required fields before submitting.");
+      setShowModal(true);
       return;
     }
 
-    setLoading(true); // ✅ Start loading
+    setLoading(true);
 
     const requestData = {
       destination,
@@ -69,16 +74,26 @@ export const Pricing = () => {
       });
 
       if (response.ok) {
-        alert("Your request has been recorded. Our team will contact you soon.");
+        setModalMessage("Your request has been recorded. Our team will contact you soon.");
+        setShowModal(true);
       } else {
         const data = await response.json();
-        alert(`Error: ${data.error}`);
+        setModalMessage(`Error: ${data.error}`);
+        setShowModal(true);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Failed to submit request. Please try again later.");
+      setModalMessage("Failed to submit request. Please try again later.");
+      setShowModal(true);
     } finally {
-      setLoading(false); // ✅ Stop loading
+      setLoading(false);
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    if (redirectToSignin) {
+      window.location.href = "/signin"; // Redirect only after pressing "OK"
     }
   };
 
@@ -124,6 +139,15 @@ export const Pricing = () => {
           {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
+
+      {showModal && (
+        <div style={styles.modalOverlay}>
+          <div style={styles.modal}>
+            <p>{modalMessage}</p>
+            <button onClick={closeModal} style={styles.okButton}>OK</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -218,5 +242,33 @@ const styles = {
     cursor: "pointer",
     fontSize: "16px",
     fontWeight: "bold",
+  },
+  modalOverlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modal: {
+    backgroundColor: "#fff",
+    padding: "20px",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    textAlign: "center",
+  },
+  okButton: {
+    padding: "10px 20px",
+    backgroundColor: "#7AB2D3",
+    color: "#white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    fontSize: "16px",
+    marginTop: "10px",
   },
 };
