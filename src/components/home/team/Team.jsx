@@ -7,6 +7,7 @@ const Team = () => {
   const [destination, setDestination] = useState("");
   const [selectedItem, setSelectedItem] = useState("");
   const [estimatedCost, setEstimatedCost] = useState(null);
+  const [error, setError] = useState("");
 
   const dredges = ["Dredge Alpha", "Dredge Titan", "Dredge Beta", "Cargo Hercules", "Dredge Gamma"];
   const vessels = ["Vessel Pioneer", "Vessel Explorer", "Vessel Voyager"];
@@ -32,24 +33,47 @@ const Team = () => {
     if (newRange.start && newRange.end) {
       const startDate = new Date(newRange.start);
       const endDate = new Date(newRange.end);
-      const timeDiff = Math.abs(endDate - startDate);
+      const timeDiff = endDate - startDate;
       const calculatedDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-      setDays(calculatedDays);
+
+      if (calculatedDays < 0) {
+        setError("End date cannot be before the start date.");
+        setDays(0);
+      } else {
+        setError("");
+        setDays(calculatedDays);
+      }
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Reset the estimated cost to null to refresh the estimation
+    setEstimatedCost(null);
+
+    // Validate all fields
     if (!destination || !selectedItem || !dateRange.start || !dateRange.end) {
       alert("Please fill out all fields before estimating.");
       return;
     }
 
+    if (days <= 0) {
+      setError("Please select valid dates (end date must be after start date).");
+      return;
+    }
+
+    // Ensure selectedItem is valid
     const itemCategory = view === "dredges" ? "dredges" : "vessels";
-    const costPerDay = pricing[itemCategory][selectedItem] || 0;
+    const costPerDay = pricing[itemCategory][selectedItem];
+
+    if (!costPerDay) {
+      setError("Invalid transport type selected.");
+      return;
+    }
+
+    // Calculate total cost
     const totalCost = costPerDay * days;
-    
     setEstimatedCost(totalCost);
   };
 
@@ -102,6 +126,7 @@ const Team = () => {
             <input type="date" name="end" value={dateRange.end} onChange={handleDateChange} style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "6px", fontSize: "16px" }} />
           </div>
           {days > 0 && <p>Total Days: {days}</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
 
         <button type="submit" style={{ padding: "10px", border: "none", borderRadius: "6px", cursor: "pointer", fontSize: "16px", fontWeight: "bold", background: "#28a745", color: "white" }}>Get Cost Estimation</button>
