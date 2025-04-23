@@ -9,20 +9,20 @@ const SignIn = () => {
 
   const handleLogin = async () => {
     if (username === "asmarinesadmin" && password === "arshad03") {
-      window.location.href = "/admindashboard"; // Redirect to Admin Dashboard
+      window.open("/admindashboard", "_blank"); // Open Admin Dashboard in new tab
       return;
     }
 
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://user-credentials-arfa.onrender.com/api/auth/login", // Updated URL
+        "https://user-credentials-arfa.onrender.com/api/auth/login",
         { username, password }
       );
 
       if (response.status === 200) {
         localStorage.setItem("username", username);
-        window.location.href = "/";
+        window.open("/", "_blank"); // Open home page in new tab
       } else {
         alert("Invalid username or password");
       }
@@ -95,7 +95,7 @@ const SignIn = () => {
         <div className="signin-footer">
           <p>
             Don't have an account?{" "}
-            <button onClick={() => (window.location.href = "/signup")}>
+            <button onClick={() => window.location.href = "/signup"}>
               Sign Up
             </button>
           </p>
